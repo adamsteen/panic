@@ -1,15 +1,17 @@
 # panic
 A setup to panic OpenBSD
 
-install opam and ocaml
+install opam, ocaml and dependencies
 
 ```
-doas pkg_add opam ocaml
+doas pkg_add opam ocaml gmake
 ```
 
 build panic
 
 ```
+opam init
+opam pin solo5-bindings-hvt https://github.com/adamsteen/solo5.git#fix_no_debug_345
 mirage configure -t hvt && gmake depends && gmake
 ```
 
